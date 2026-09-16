@@ -8,8 +8,6 @@ company/index.html 한 파일로 만든다. 데이터는 HTML 안에 JSON으로 
 
     python build_company.py "경로/부스넘버링.xlsx"
 """
-import glob
-import html
 import io
 import json
 import os
@@ -43,22 +41,8 @@ def norm_url(u):
     return u if re.match(r"^https?://", u, re.I) else "https://" + u.lstrip("/")
 
 
-def mentor_links():
-    """company/ 에서 멘토 페이지로 연결하기 위해 기업명 -> c/NN.html 매핑을 만든다."""
-    out = {}
-    for path in sorted(glob.glob(os.path.join(ROOT, "c", "[0-9][0-9].html"))):
-        text = io.open(path, encoding="utf-8").read(4000)
-        m = re.search(r'data-mentor="([^"]+)"', text)
-        if not m:
-            continue
-        name = html.unescape(m.group(1)).split("_")[0].strip()
-        out[name] = "../c/" + os.path.basename(path)
-    return out
-
-
 def load(xlsx):
     wb = openpyxl.load_workbook(xlsx, data_only=True)
-    links = mentor_links()
     items = []
 
     ws = wb["기업채용"]
@@ -89,7 +73,6 @@ def load(xlsx):
             "zone": "B", "booth": booth, "name": name, "major": "", "biz": "",
             "url": "", "size": "", "loc": "", "intro": "", "hiring": False,
             "jobs": [{"t": job, "d": "", "q": ""}] if job else [],
-            "link": links.get(name, ""),
         })
 
     ws = wb["고용정책홍보"]
@@ -190,10 +173,6 @@ details[open] summary:after{content:" ▴"}
 .jd .lbl{font-size:11px;font-weight:700;color:var(--accent);margin-top:8px}
 a.site{display:inline-block;margin-top:10px;font-size:12.5px;color:var(--blue);
   word-break:break-all}
-a.mlink{display:inline-block;margin-top:10px;font-size:12.5px;font-weight:700;
-  color:#0b6b4f;text-decoration:none;border:1.5px solid #bfeedd;background:#e9fbf4;
-  padding:7px 12px;border-radius:10px}
-a.mlink:hover{border-color:var(--accent3)}
 .empty{padding:50px;text-align:center;color:#7c8aac;font-size:14px;grid-column:1/-1}
 footer{margin-top:34px;font-size:12px;color:#6b7ba0;text-align:center;line-height:1.8}
 footer a{color:var(--blue)}
@@ -212,7 +191,7 @@ footer a{color:var(--blue)}
   <div class="hd">
     <span class="badge">2026 한신대학교 채용박람회 · 대학일자리플러스센터</span>
     <h1>참여기업 <b>정보</b> 대시보드</h1>
-    <div class="sub">{event} · <a href="../">동문 멘토 사전질문 보드</a></div>
+    <div class="sub">{event}</div>
   </div>
 </header>
 
@@ -240,8 +219,7 @@ footer a{color:var(--blue)}
   <div class="grid" id="grid"></div>
 
   <footer>
-    데이터 출처: 「기업채용공고게시판, 부스배치도 부스넘버링 v.3」 (2026-09-15 기준)<br>
-    <a href="../">동문 멘토 사전질문 보드</a> · <a href="../c/">멘토별 페이지 목록</a>
+    데이터 출처: 「기업채용공고게시판, 부스배치도 부스넘버링 v.3」 (2026-09-15 기준)
   </footer>
 </div>
 
@@ -273,7 +251,6 @@ function card(c){
   if(c.size) meta.push('<b>근로자</b> ' + esc(c.size));
   if(c.loc)  meta.push('<b>소재지</b> ' + esc(c.loc));
   if(meta.length) h += '<div class="meta">' + meta.join('<br>') + '</div>';
-  if(c.link) h += '<a class="mlink" href="' + esc(c.link) + '">이 멘토의 사전질문 보기 →</a>';
   h += '</div>';
   if(hasDetail){
     h += '<details><summary>상세 정보 보기</summary><div class="body">';
