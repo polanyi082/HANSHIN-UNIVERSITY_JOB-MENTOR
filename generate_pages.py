@@ -151,7 +151,7 @@ HUB = """<!doctype html>
   <div id="hub"><div class="empty">멘토 목록을 불러오는 중입니다…</div></div>
   <footer>
     데이터 출처: 구글 폼 응답 시트 「참여학생 사전신청 설문지(응답)」 · 5분마다 자동 갱신<br>
-    <a href="../">통합 보드(멘토 전체 한 화면)</a>
+    <a href="../">통합 보드(멘토 전체 한 화면)</a> · <a href="../company/">참여기업 정보</a>
   </footer>
 </div>
 <script src="mentor.js"></script>
@@ -173,7 +173,7 @@ BOARD = """<!doctype html>
   <div class="hd">
     <span class="badge">2026 한신대학교 채용박람회 · 대학일자리플러스센터</span>
     <h1>동문 멘토 <b>사전질문</b> 보드</h1>
-    <div class="sub">{event} · <a href="c/">멘토별 개별 페이지 목록</a></div>
+    <div class="sub">{event} · <a href="c/">멘토별 개별 페이지 목록</a> · <a href="company/">참여기업 정보</a></div>
   </div>
 </header>
 
