@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>호텔롯데월드 · 동문 멘토 사전질문 · 2026 한신대학교 채용박람회</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="mentor.css">
+</head>
+<body data-mentor="호텔롯데월드_IT개발_컴퓨터공학부">
+<header>
+  <div class="hd">
+    <span class="badge">2026 한신대학교 채용박람회 · 동문 멘토링</span><span class="booth">멘토 10</span>
+    <h1>호텔롯데월드<small>IT개발 · 동문 컴퓨터공학부</small></h1>
+    <div class="sub">2026 한신대학교 채용박람회 · 대학일자리플러스센터 · <a href="index.html">전체 멘토 목록</a></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="solo">
+    <div class="stats">
+      <div class="stat"><b id="s1">–</b><span>신청 학생</span></div>
+      <div class="stat o"><b id="s2">–</b><span>사전질문 1</span></div>
+      <div class="stat y"><b id="s3">–</b><span>사전질문 2</span></div>
+      <div class="stat g"><b id="s5">–</b><span>사전질문 3</span></div>
+      <div class="stat w"><b id="s4" style="font-size:14px;padding-top:5px">–</b><span>최종 동기화</span></div>
+      <button id="reload">↻ 새로고침</button>
+    </div>
+  </div>
+
+  <h2>사전질문 리스트</h2>
+  <div class="note">전공(계열) 오름차순 정렬 · 구글 폼 응답 시트 실시간 연동</div>
+  <div class="tablebox">
+    <div class="scroll"><table>
+      <thead><tr>
+        <th class="idx">#</th><th>전공(계열)</th><th>이름</th><th>학번</th><th>희망 시간대</th>
+        <th style="width:26%">사전질문 1 — 직무 역량 · 인재상</th>
+        <th style="width:26%">사전질문 2 — 서류/면접 · 어학 · 자격증</th>
+        <th style="width:22%">사전질문 3 — 기타 궁금한 점</th>
+      </tr></thead>
+      <tbody id="tb"><tr><td colspan="8" class="empty">데이터를 불러오는 중입니다…</td></tr></tbody>
+    </table></div>
+  </div>
+
+  <h2>핵심 키워드 워드클라우드</h2>
+  <div class="note">이 멘토를 신청한 학생들의 질문에서 추출한 키워드 · 글자 크기 = 언급 빈도</div>
+  <div class="clouds">
+    <div class="cloudcard">
+      <h3>사전질문 1 키워드</h3>
+      <div class="cap">희망 직무의 핵심 실무 역량 · 인재상 · 근무환경</div>
+      <div class="circle" id="c1"></div>
+      <div class="chips" id="k1"></div>
+    </div>
+    <div class="cloudcard q2">
+      <h3>사전질문 2 키워드</h3>
+      <div class="cap">서류/면접 준비 전략 · 어학 · 자격증 · 포트폴리오</div>
+      <div class="circle q2" id="c2"></div>
+      <div class="chips" id="k2"></div>
+    </div>
+    <div class="cloudcard q3">
+      <h3>사전질문 3 키워드</h3>
+      <div class="cap">그 외 다양한 궁금한 점</div>
+      <div class="circle q3" id="c3"></div>
+      <div class="chips" id="k3"></div>
+    </div>
+  </div>
+
+  <footer>
+    데이터 출처: 구글 폼 응답 시트 「참여학생 사전신청 설문지(응답)」 · 5분마다 자동 갱신<br>
+    <a href="index.html">← 전체 멘토 목록</a> · <a href="../">통합 보드</a>
+  </footer>
+</div>
+<script src="mentor.js"></script>
+</body>
+</html>
